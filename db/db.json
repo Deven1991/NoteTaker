@@ -1,6 +1,18 @@
 [
     {
-        "title":"Test Title",
-        "text":"Test text"
+        "title":"Dog-Walk",
+        "text":"Take Sven for a long walk around the neighborhood."
+    }
+    {
+        "title":"Call the Dentist",
+        "text":"Schedule bi-annual cleaning appointment before wedding."
+    }
+    {
+        "title":"Go to the Bank",
+        "text":"Get cash from ATM and deposit checks."
+    }
+    {
+        "title":"Call Hyatt Ziva",
+        "text":"Ask questions regarding ceremony and shuttle to and from the airport."
     }
 ]
