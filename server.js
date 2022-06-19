@@ -9,3 +9,8 @@ const app = express();
 
 // Set port
 const PORT = process.env.PORT ||  3001;
+
+// Express middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
