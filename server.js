@@ -33,4 +33,42 @@ app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
+//Delete ID
+app.delete('/api/notes/:id', (req, res) => {
+    fs.readFile(path.join(__dirname, "./db/db.json"), 'utf8', (err, data) => {
+        let db = JSON.parse(data);
+        db = db.filter((e) => {
+            return e.id !== req.params.id;
+        });
+        fs.writeFile(
+            path.join(__dirname, "./db/db.json"),
+            JSON.stringify(db, null, 2),
+            (err, data) => {
+                if (err) throw err;
+                res.json(db);
+            }
+        );
+    });
+});
+
+app.post('/api/notes', (req, res) => {
+    fs.readFile(path.join(__dirname, "./db/db.json"), 'utf8', (err, data) => {
+        let db = JSON.parse(data);
+        db.push({
+            id: uuid.v4(),
+            ...req.body,
+        });
+        fs.writeFile(
+            //Writes file to json file in db folder
+            path.join(__dirname, "./db/db.json"),
+            JSON.stringify(db, null, 2),
+            (err, data) => {
+                if (err) throw err;
+                res.json(db);
+            }
+        );
+    });
+});
+
+//Port
 app.listen(PORT, () => console.log(`The server is now listening on PORT ${PORT}`));
