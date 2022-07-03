@@ -1,4 +1,4 @@
-// Dependencies.
+//Dependencies
 const express = require('express');
 const uuid = require('uuid');
 const fs = require('fs');
@@ -20,7 +20,7 @@ app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
-//API route
+//API routes 
 app.get('/api/notes', (req, res) => {
     fs.readFile(path.join(__dirname, "./db/db.json"), 'utf8', (err, data) => {
         if (err) throw err;
@@ -33,7 +33,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
-//Delete ID *Bonus*
+//Delete ID
 app.delete('/api/notes/:id', (req, res) => {
     fs.readFile(path.join(__dirname, "./db/db.json"), 'utf8', (err, data) => {
         let db = JSON.parse(data);
@@ -69,5 +69,5 @@ app.post('/api/notes', (req, res) => {
     });
 });
 
-// Port 
+//Port
 app.listen(PORT, () => console.log(`The server is now listening on PORT ${PORT}`));
